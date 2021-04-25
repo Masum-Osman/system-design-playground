@@ -22,6 +22,7 @@ So for that, the first thing I want to do is, I may shard my DataBase on their p
 
 ## Services
 After that, we may point our eyes on our application server. Get up baby. You need to be clusterd too. I may cluster each of them at least 3 in number. 
+And the most important part is, **It Needs to be Stateless.** Otherwise there is no point I guess.
 
 ## Load Balancer
 I think Load Balancer (LB) is one of the most important part of this process. 
