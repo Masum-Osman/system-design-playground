@@ -17,8 +17,13 @@ Well, for that kind of HA, we always need a backup plan. A backup thing. Like ou
 Let's think where we can do some additional works for that HA. 
 And to let you know, these things are mine concepts.  I had learned them. I am not saying "That is the only way." I am eager to learn different approaches of yours.
 
+## Database
 So for that, the first thing I want to do is, I may shard my DataBase on their priority. Like the Microservices, where different data needs to be in touch with their close one, those are the tables may stand on same database. That would be like closely coupled data. I would break them in maximum number of servers possible. And If needed, I would apply Master Slave architecture here.
 
-After that, we may point our eyes on our application server. Get up baby. You need to be clusterd too. I may cluster each of them at least 3 in number.
+## Services
+After that, we may point our eyes on our application server. Get up baby. You need to be clusterd too. I may cluster each of them at least 3 in number. 
 
+## Load Balancer
+I think Load Balancer (LB) is one of the most important part of this process. 
 
+## KeepAlived
