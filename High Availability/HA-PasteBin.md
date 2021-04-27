@@ -18,10 +18,12 @@ Let's think about where we can do some additional work for that HA.
 And to let you know, these things are my concepts.  I had learned them. I am not saying "That is the only way." I am eager to learn different approaches of yours.
 
 ## Database
-So for that, the first thing I want to do is, I may shard my DataBase on their priority. Like the Microservices, where different data needs to be in touch with their close one, those are the tables that may stand on the same database. That would be like closely coupled data. I would break them into a maximum number of servers possible. And If needed, I would apply Master Slave architecture here.
+So for that, the first thing we need to do is, We may partitioned our DataBase on their priority then the service they may provide. 
+Try to separete the data base rather than keeping it one big storage. 
+And If possible, I would apply Master Slave architecture here so that the GET and POST may work indevidualy and improve overall DB performance.
 
 ## Services
-After that, we may point our eyes on our application server. Get up baby. You need to be clustered too. I may cluster each of them at least 3 in number. 
+After that, we may point our eyes on our application server. Get up baby. You need to be clustered too. Cluster each of them at least 3 in number. 
 And the most important part is, **It Needs to be Stateless.** Otherwise there is no point I guess. And the clusters may be on containers, or in different servers. But I prefer to place them on different servers. It makes the system more reliable. 
 
 ## Load Balancer
@@ -44,6 +46,3 @@ So now, we may think the whole package as a container (not actually, but for thi
 Now, we can be more negetive on here. What if the SASS goes down? like the AWS or Azure itself? What should we do to catch this exception? 
 
 For that kind of disester, we can replicate our whole system/infastructure on different cloud providers. Or even same provider but different region. Like a copy in the Azure while AWS is our primary. And a copy in the Singapore region another on Osaka.
-
-
-#### 
