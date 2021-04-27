@@ -28,3 +28,5 @@ And the most important part is, **It Needs to be Stateless.** Otherwise there is
 I think Load Balancer (LB) is one of the most important part of this process. 
 
 ## KeepAlived
+
+![alt text](https://github.com/Masum-Osman/system-design-playground/blob/master/HA-Sketch.JPG?raw=true)
