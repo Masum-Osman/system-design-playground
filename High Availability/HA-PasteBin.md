@@ -32,7 +32,7 @@ Here is the thing. **keepalived**
 We are going to use it on our load balancer. Remember we always keep a backup plan. For DB, we tried partitioning. We clustered our app on different copies. Now we make sure that we have a backup Load Balancer who monitors all of the things.
 High Availability is achieved by the Virtual Router Redundancy Protocol (VRRP). VRRP is a fundamental brick for router failover. In addition, Keepalived implements a set of hooks to the VRRP finite state machine providing low-level and high-speed protocol interactions. They're gonna use tricks like Virtual IP Address that makes our Load Balancer work as a single point entry. 
 
-![alt text](https://github.com/Masum-Osman/system-design-playground/blob/master/HA-Sketch.JPG?raw=true)
+![alt text](https://github.com/Masum-Osman/system-design-playground/blob/master/High%20Availability/HA-Sketch.JPG?raw=true)
 
 ## Resilient Infrastructures
 If we have done all of our works mentioned earlier, It is high time to think a little bit more. 
