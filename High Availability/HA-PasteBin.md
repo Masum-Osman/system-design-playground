@@ -1,14 +1,6 @@
 # Ensuring High Availability
 
-
-1. Try to prioritize your DB. Like primary db. Then other DBs.
-2. Multiple clusters of your app
-3. Use Load Balancer
-4. Use keepalived to up and running your load balancer
-5. Use this whole system in different Cloud Providers 
-
-
-So, we need a software that doesn't go out for a single moment. Like you use the Facebook app. You never feel that the app is broken. You feel sometimes that some very few of it's features aren't working. But overall it isn't broken.
+So, we need a software that doesn't go out for a single moment. Like you use the Facebook app. You never feel that the app is broken. You feel sometimes that some very few of it's features aren't working. But overall it doesn't look broken.
 
 So if you are in charge of designing the same kind of High Availability (we may call it HA from now), what would you do? What are the extra works you have to do besides making the software's Frontend, Backend and Business Logics?
 
@@ -17,10 +9,18 @@ Well, for that kind of HA, we always need a backup plan. A backup thing. Like ou
 Let's think about where we can do some additional work for that HA. 
 And to let you know, these things are my concepts.  I had learned them. I am not saying "That is the only way." I am eager to learn different approaches of yours.
 
+I may consider the following points as I have this tiny level of experience till now:
+
+1. Try to prioritize your DB.
+2. Multiple clusters of your app
+3. Use Load Balancer
+4. Use keepalived to up and running your load balancer
+5. Use this whole system in different Cloud Providers 
+
 ## Database
-So for that, the first thing we need to do is, We may partitioned our DataBase on their priority then the service they may provide. 
-Try to separete the data base rather than keeping it one big storage. 
-And If possible, I would apply Master Slave architecture here so that the GET and POST may work indevidualy and improve overall DB performance.
+So for that, the first thing we need to do is, We may partition our DataBase on their priority then the service they may provide. 
+Try to separate the database rather than keeping it one big storage. 
+And If possible, I would apply Master Slave architecture here so that the GET and POST may work individually and improve overall DB performance.
 
 ## Services
 After that, we may point our eyes on our application server. Get up baby. You need to be clustered too. Cluster each of them at least 3 in number. 
@@ -38,11 +38,18 @@ High Availability is achieved by the Virtual Router Redundancy Protocol (VRRP). 
 
 ## Resilient Infrastructures
 If we have done all of our works mentioned earlier, It is high time to think a little bit more. 
-Let's think all of our setups is like an app itself. Let it put on SASS providers like AWS, Azure or GCP to make the app work. 
-So now, we may think the whole package as a container (not actually, but for this point only) within the keepalived, LBs, services, DBs inside it. And they are working fine. A request comes, LB powred by keepalived handles it and send it to the appropriate cluster of service. They take and do the required works and send the response back to the user. 
+Let's think all of our setups are like an app itself. Let it put on SASS providers like AWS, Azure or GCP to make the app work. 
+So now, we may think the whole package as a container (not actually, but for this point only) within the keepalived, LBs, services, DBs inside it. And they are working fine. A request comes, LB powered by keepalived handles it and sends it to the appropriate cluster of service. They take and do the required work and send the response back to the user. 
 + If a service/cluster goes down, our system will not melt down because there are other more clusters providing the same type of job. 
-+ If there is a problem with the LB itself, keepalive will invoke itself to up and active the other LB with same IP adsress through VRRP. And thus the whole system is up again.
++ If there is a problem with the LB itself, keepalive will invoke itself to up and activate the other LB with the same IP address through VRRP. And thus the whole system is up again.
 
-Now, we can be more negetive on here. What if the SASS goes down? like the AWS or Azure itself? What should we do to catch this exception? 
+Now, we can be more negative here. What if the SASS goes down? like AWS or Azure itself? What should we do to catch this exception? 
 
-For that kind of disester, we can replicate our whole system/infastructure on different cloud providers. Or even same provider but different region. Like a copy in the Azure while AWS is our primary. And a copy in the Singapore region another on Osaka.
+For that kind of disaster, we can replicate our whole system/infrastructure on different cloud providers. Or even the same provider but different region. Like a copy in Azure while AWS is our primary. And a copy in the Singapore region, another on Osaka.
+
+### :)
+Yeah, a lot of work indeed. 
+There is another point I left which was DNS level Load Balancing. 
+And I left one big question unanswered here. That is, "What If our DB server goes down?"
+
+We may catch again here on another post discussing those facts.
